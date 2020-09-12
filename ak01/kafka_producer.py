@@ -26,7 +26,7 @@ if __name__ == '__main__':
     # 步驟1. 設定要連線到Kafka集群的相關設定
     props = {
         # Kafka集群在那裡?
-        'bootstrap.servers': 'localhost:9092',  # <-- 置換成要連接的Kafka集群
+        'bootstrap.servers': '10.120.26.15:9092',  # <-- 置換成要連接的Kafka集群
         'error_cb': error_cb                    # 設定接收error訊息的callback函數
     }
     # 步驟2. 產生一個Kafka的Producer的實例
@@ -36,13 +36,13 @@ if __name__ == '__main__':
     msgCounter = 0
     try:
         # produce(topic, [value], [key], [partition], [on_delivery], [timestamp], [headers])
-        # producer.produce(topicName, 'Hello_1')
-        # producer.produce(topicName, 'Hello_2')
-        # producer.produce(topicName, 'Hello_3')
-        # producer.produce(topicName, 'Hello_4')
-        producer.produce(topicName, key="whereami",value='Hello_4')
+        producer.produce(topicName, '1',"a")
+        producer.produce(topicName, '2',"b")
+        producer.produce(topicName, '3',"c")
+        producer.produce(topicName, '4',"d")
+        producer.produce(topicName, key="e",value='5')
         producer.flush()
-        msgCounter += 4
+        msgCounter += 5
         print('Send ' + str(msgCounter) + ' messages to Kafka')
     except BufferError as e:
         # 錯誤處理

@@ -79,7 +79,7 @@ if __name__ == '__main__':
     topicName = "par12345"
 
     # 步驟4. 讓Consumer向Kafka集群訂閱指定的topic
-    consumer.subscribe([topicName], on_assign=my_assign) # on_assign=my_assign為從offset=0開始抓
+    consumer.subscribe([topicName]) # on_assign=my_assign為從offset=0開始抓
     # 步驟5. 持續的拉取Kafka有進來的訊息
     count = 0
     try:
